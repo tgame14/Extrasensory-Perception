@@ -8,4 +8,8 @@ import com.tgame.mods.coremod.CommonProxyBase;
  */
 public class CommonProxy extends CommonProxyBase
 {
+    public int addArmor(String armor)
+    {
+        return 0;
+    }
 }
