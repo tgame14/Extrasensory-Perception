@@ -13,7 +13,7 @@ public class ESPCreativeTab extends CreativeTabs
 {
     public static ESPCreativeTab INSTANCE = new ESPCreativeTab(CreativeTabs.getNextID(), "tabESP");
 
-    public ESPCreativeTab (int pos, String tabId)
+    private ESPCreativeTab (int pos, String tabId)
     {
         super(pos, tabId);
     }
