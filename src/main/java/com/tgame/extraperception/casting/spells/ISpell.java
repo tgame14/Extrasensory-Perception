@@ -8,8 +8,8 @@ import net.minecraft.entity.player.EntityPlayer;
  * @since 22/04/14
  * @author tgame14
  */
-public abstract class SpellBase
+public interface ISpell
 {
-    public abstract void onSpellUse(EntityPlayer player);
+    public void onSpellUse(EntityPlayer player);
 
 }

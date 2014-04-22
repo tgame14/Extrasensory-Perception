@@ -23,7 +23,7 @@ public class Settings
 
     static
     {
-        ThreadContext.put("side", FMLCommonHandler.instance().getSide().name().toLowerCase(Locale.ENGLISH));
+        //ThreadContext.put("side", FMLCommonHandler.instance().getSide().name().toLowerCase(Locale.ENGLISH));
     }
 
 }

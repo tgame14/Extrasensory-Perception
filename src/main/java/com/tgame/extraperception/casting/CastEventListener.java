@@ -1,10 +1,8 @@
 package com.tgame.extraperception.casting;
 
-import com.tgame.extraperception.Settings;
-import com.tgame.extraperception.casting.spells.SpellBase;
+import com.tgame.extraperception.casting.spells.ISpell;
 import com.tgame.extraperception.casting.spells.SpellRegistry;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.lwjgl.input.Keyboard;
@@ -16,11 +14,11 @@ import org.lwjgl.input.Keyboard;
 public class CastEventListener
 {
     public static final String PLAYER_USE_SPELLS = "useSpells";
-    public static final String CURRENT_SPELL_USE = "currentSpellUsed";
+    public static final String CURRENT_SPELL = "currentSpellUsed";
 
 
     @SubscribeEvent
-    public void playerRightClick(PlayerInteractEvent event)
+    public void playerRightClick (PlayerInteractEvent event)
     {
         if (event.action != PlayerInteractEvent.Action.LEFT_CLICK_BLOCK)
         {
@@ -37,15 +35,26 @@ public class CastEventListener
             }
             else
             {
-                if (event.entityPlayer.getEntityData().hasKey(PLAYER_USE_SPELLS) && event.entityPlayer.getEntityData().getBoolean(PLAYER_USE_SPELLS) && Keyboard.isKeyDown(Keyboard.KEY_GRAVE))
+                if (Keyboard.isKeyDown(Keyboard.KEY_G))
                 {
-                    if (!event.entityPlayer.getEntityData().hasKey(CURRENT_SPELL_USE))
+                    if (!event.entityPlayer.getEntityData().hasKey(CURRENT_SPELL))
                     {
-                        event.entityPlayer.getEntityData().setString(CURRENT_SPELL_USE, SpellRegistry.INSTANCE.spellList.get(0));
+                        event.entityPlayer.getEntityData().setString(CURRENT_SPELL, SpellRegistry.INSTANCE.spellList.get(0));
                     }
+                    else
+                    {
+                        String str1 = event.entityPlayer.getEntityData().getString(CURRENT_SPELL);
+                        int index = SpellRegistry.INSTANCE.spellList.indexOf(str1);
+                        event.entityPlayer.getEntityData().setString(CURRENT_SPELL, SpellRegistry.INSTANCE.spellList.get(index));
+                    }
+                    event.entityPlayer.addChatComponentMessage(new ChatComponentText("Current Spell: " + event.entityPlayer.getEntityData().getString(CURRENT_SPELL)));
+                }
 
-                    SpellBase spell = SpellRegistry.INSTANCE.spellMap.get(event.entityPlayer.getEntityData().getString(CURRENT_SPELL_USE));
+                else if (event.entityPlayer.getEntityData().hasKey(PLAYER_USE_SPELLS) && event.entityPlayer.getEntityData().getBoolean(PLAYER_USE_SPELLS) && event.entityPlayer.getEntityData().hasKey(CURRENT_SPELL))
+                {
+                    ISpell spell = SpellRegistry.INSTANCE.spellMap.get(event.entityPlayer.getEntityData().getString(CURRENT_SPELL));
                     spell.onSpellUse(event.entityPlayer);
+
 
                 }
             }

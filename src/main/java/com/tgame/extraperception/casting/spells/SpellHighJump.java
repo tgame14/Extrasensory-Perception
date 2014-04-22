@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
  * @since 22/04/14
  * @author tgame14
  */
-public class SpellHighJump extends SpellBase
+public class SpellHighJump implements ISpell
 {
     @Override
     public void onSpellUse (EntityPlayer player)
