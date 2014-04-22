@@ -2,6 +2,8 @@ package com.tgame.extraperception;
 
 import com.tgame.extraperception.armor.ItemShamanArmor;
 import com.tgame.extraperception.casting.CastTickEventListener;
+import com.tgame.extraperception.casting.spells.SpellHighJump;
+import com.tgame.extraperception.casting.spells.SpellRegistry;
 import com.tgame.extraperception.proxies.CommonProxy;
 import com.tgame.extraperception.utils.ESPCreativeTab;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -56,6 +58,8 @@ public class ExtrasensoryPerception
         registerItem(itemShamanBoots);
 
         MinecraftForge.EVENT_BUS.register(new CastTickEventListener());
+
+        SpellRegistry.addSpell(SpellHighJump.class.getSimpleName(), new SpellHighJump());
     }
 
     @Mod.EventHandler
