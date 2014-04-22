@@ -13,7 +13,7 @@ import org.lwjgl.input.Keyboard;
  * @since 22/04/14
  * @author tgame14
  */
-public class CastTickEventListener
+public class CastEventListener
 {
     public static final String PLAYER_USE_SPELLS = "useSpells";
     public static final String CURRENT_SPELL_USE = "currentSpellUsed";
@@ -41,10 +41,10 @@ public class CastTickEventListener
                 {
                     if (!event.entityPlayer.getEntityData().hasKey(CURRENT_SPELL_USE))
                     {
-                        event.entityPlayer.getEntityData().setString(CURRENT_SPELL_USE, SpellRegistry.getSpellRegistry().keySet().iterator().next());
+                        event.entityPlayer.getEntityData().setString(CURRENT_SPELL_USE, SpellRegistry.INSTANCE.spellList.get(0));
                     }
 
-                    SpellBase spell = SpellRegistry.getSpellRegistry().get(event.entityPlayer.getEntityData().getString(CURRENT_SPELL_USE));
+                    SpellBase spell = SpellRegistry.INSTANCE.spellMap.get(event.entityPlayer.getEntityData().getString(CURRENT_SPELL_USE));
                     spell.onSpellUse(event.entityPlayer);
 
                 }

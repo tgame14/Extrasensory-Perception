@@ -1,7 +1,10 @@
 package com.tgame.extraperception.casting.spells;
 
-import com.google.common.collect.HashBiMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.tgame.extraperception.Settings;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.LoaderState;
 
 import java.util.Map;
 
@@ -11,37 +14,30 @@ import java.util.Map;
  */
 public class SpellRegistry
 {
-    private static final HashBiMap<String, SpellBase> spellRegistry = HashBiMap.create();
+    public final static SpellRegistry INSTANCE = new SpellRegistry();
 
+    public ImmutableMap<String, SpellBase> spellMap;
+    public ImmutableList<String> spellList;
 
-    public static void addSpell(String unlocalizedName, SpellBase spellBase) throws UnmodifiableValueMapException
-    {
-        synchronized (spellRegistry)
-        {
-            if (!spellRegistry.containsKey(unlocalizedName))
-            {
-                spellRegistry.put(unlocalizedName, spellBase);
-            }
-            else throw new UnmodifiableValueMapException(Settings.NAME + " has thrown an exception due to a Bad spell, report to @AUTHOR@");
-        }
-    }
+    private final ImmutableMap.Builder<String, SpellBase> spellMapBuilder = ImmutableMap.builder();
+    private final ImmutableList.Builder<String> spellListBuilder = ImmutableList.builder();
 
-    public static Map<String, SpellBase> getSpellRegistry()
-    {
-        return spellRegistry;
-    }
-
-
-
-    public static class UnmodifiableValueMapException extends RuntimeException
+    private SpellRegistry ()
     {
 
-        public UnmodifiableValueMapException (String s)
-        {
-            super(s);
-        }
     }
 
+    public void addSpell (String unlocalizedName, SpellBase spellBase)
+    {
+        spellMapBuilder.put(unlocalizedName, spellBase);
+        spellListBuilder.add(unlocalizedName);
+    }
+
+    public void postLoaded()
+    {
+        this.spellMap = spellMapBuilder.build();
+        this.spellList = spellListBuilder.build();
+    }
 
 
 }
