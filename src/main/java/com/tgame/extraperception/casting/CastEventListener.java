@@ -26,13 +26,9 @@ public class CastEventListener
             {
                 if (event.entityPlayer.isSneaking())
                 {
-                    if (event.entityPlayer.getHeldItem() == null)
-                    {
-                        boolean data = event.entityPlayer.getEntityData().hasKey(PLAYER_USE_SPELLS) ? !event.entityPlayer.getEntityData().getBoolean(PLAYER_USE_SPELLS) : true;
-                        event.entityPlayer.getEntityData().setBoolean(PLAYER_USE_SPELLS, data);
-                        event.entityPlayer.addChatComponentMessage(new ChatComponentText("Spell Caster Mode: " + data)); //TODO: Localize
-
-                    }
+                    boolean data = event.entityPlayer.getEntityData().hasKey(PLAYER_USE_SPELLS) ? !event.entityPlayer.getEntityData().getBoolean(PLAYER_USE_SPELLS) : true;
+                    event.entityPlayer.getEntityData().setBoolean(PLAYER_USE_SPELLS, data);
+                    event.entityPlayer.addChatComponentMessage(new ChatComponentText("Spell Caster Mode: " + data)); //TODO: Localize
 
                 }
                 else
