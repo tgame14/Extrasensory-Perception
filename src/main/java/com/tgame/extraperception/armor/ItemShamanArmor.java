@@ -1,5 +1,6 @@
 package com.tgame.extraperception.armor;
 
+import com.tgame.extraperception.Settings;
 import com.tgame.extraperception.utils.ESPItemHelper;
 import net.minecraft.item.ItemArmor;
 
@@ -12,6 +13,7 @@ public class ItemShamanArmor extends ItemArmor
     public ItemShamanArmor (int renderIndex, int armorType)
     {
         super(ESPItemHelper.armorMaterialUnprotective, renderIndex, armorType);
+        this.setTextureName(Settings.DOMAIN + this.getClass().getSimpleName() + "." + armorType);
     }
 
 }
