@@ -1,8 +1,10 @@
 package com.tgame.extraperception;
 
 import com.tgame.extraperception.armor.ItemShamanArmor;
+import com.tgame.extraperception.casting.CastTickEventListener;
 import com.tgame.extraperception.proxies.CommonProxy;
 import com.tgame.extraperception.utils.ESPCreativeTab;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
@@ -11,6 +13,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * @since 21/04/14
@@ -42,15 +45,17 @@ public class ExtrasensoryPerception
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        itemShamanHelmet = new ItemShamanArmor(commonProxy.addArmor("shaman"), 0).setUnlocalizedName("helmetShaman");
-        itemShamanChest = new ItemShamanArmor(commonProxy.addArmor("shaman"), 1).setUnlocalizedName("chestShaman");
-        itemShamanLegs = new ItemShamanArmor(commonProxy.addArmor("shaman"), 2).setUnlocalizedName("legsShaman");
-        itemShamanBoots = new ItemShamanArmor(commonProxy.addArmor("shaman"), 3).setUnlocalizedName("bootsShaman");
+        itemShamanHelmet = new ItemShamanArmor(commonProxy.addArmor("shaman"), 0);
+        itemShamanChest = new ItemShamanArmor(commonProxy.addArmor("shaman"), 1);
+        itemShamanLegs = new ItemShamanArmor(commonProxy.addArmor("shaman"), 2);
+        itemShamanBoots = new ItemShamanArmor(commonProxy.addArmor("shaman"), 3);
 
         registerItem(itemShamanHelmet);
         registerItem(itemShamanChest);
         registerItem(itemShamanLegs);
         registerItem(itemShamanBoots);
+
+        MinecraftForge.EVENT_BUS.register(new CastTickEventListener());
     }
 
     @Mod.EventHandler
