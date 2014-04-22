@@ -42,7 +42,7 @@ public class CastEventListener
                         else
                         {
                             String str1 = event.entityPlayer.getEntityData().getString(CURRENT_SPELL);
-                            int index = SpellRegistry.INSTANCE.spellList.indexOf(str1);
+                            int index = SpellRegistry.INSTANCE.spellList.indexOf(str1) + 1;
                             event.entityPlayer.getEntityData().setString(CURRENT_SPELL, SpellRegistry.INSTANCE.spellList.get(index));
                         }
                         event.entityPlayer.addChatComponentMessage(new ChatComponentText("Current Spell: " + event.entityPlayer.getEntityData().getString(CURRENT_SPELL)));
