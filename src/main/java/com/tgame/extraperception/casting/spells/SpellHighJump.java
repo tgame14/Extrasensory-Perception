@@ -1,5 +1,6 @@
 package com.tgame.extraperception.casting.spells;
 
+import com.tgame.extraperception.api.ISpell;
 import net.minecraft.entity.player.EntityPlayer;
 
 /**

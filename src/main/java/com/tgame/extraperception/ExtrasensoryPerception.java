@@ -3,7 +3,7 @@ package com.tgame.extraperception;
 import com.tgame.extraperception.armor.ItemShamanArmor;
 import com.tgame.extraperception.casting.CastEventListener;
 import com.tgame.extraperception.casting.spells.SpellHighJump;
-import com.tgame.extraperception.casting.spells.SpellRegistry;
+import com.tgame.extraperception.api.SpellRegistry;
 import com.tgame.extraperception.casting.spells.SpellShaderBlobs;
 import com.tgame.extraperception.proxies.CommonProxy;
 import com.tgame.extraperception.utils.ESPCreativeTab;

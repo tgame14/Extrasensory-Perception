@@ -1,9 +1,9 @@
-package com.tgame.extraperception.casting.spells;
+package com.tgame.extraperception.api;
 
 import net.minecraft.entity.player.EntityPlayer;
 
 /**
- * This class is a Basis for all Spells, it is used when a player right clicks
+ * This interface is a simple one to allow implementation of spells easily.
  *
  * @since 22/04/14
  * @author tgame14

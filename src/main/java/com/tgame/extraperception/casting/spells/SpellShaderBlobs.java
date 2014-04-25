@@ -1,9 +1,9 @@
 package com.tgame.extraperception.casting.spells;
 
+import com.tgame.extraperception.api.ISpell;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.resources.IResource;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.client.util.JsonException;

@@ -1,7 +1,7 @@
 package com.tgame.extraperception.casting;
 
-import com.tgame.extraperception.casting.spells.ISpell;
-import com.tgame.extraperception.casting.spells.SpellRegistry;
+import com.tgame.extraperception.api.ISpell;
+import com.tgame.extraperception.api.SpellRegistry;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
