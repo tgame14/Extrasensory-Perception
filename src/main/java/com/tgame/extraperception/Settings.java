@@ -20,10 +20,4 @@ public class Settings
     public static final String DOMAIN = MODID + ":";
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-
-    static
-    {
-        //ThreadContext.put("side", FMLCommonHandler.instance().getSide().name().toLowerCase(Locale.ENGLISH));
-    }
-
 }
