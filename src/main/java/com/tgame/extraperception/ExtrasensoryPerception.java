@@ -5,9 +5,8 @@ import com.tgame.extraperception.armor.ItemShamanArmor;
 import com.tgame.extraperception.casting.CastEventListener;
 import com.tgame.extraperception.casting.spells.SpellHighJump;
 import com.tgame.extraperception.api.SpellRegistry;
-import com.tgame.extraperception.casting.spells.SpellShaderBlobs;
+import com.tgame.extraperception.casting.spells.SpellShaders;
 import com.tgame.extraperception.proxies.CommonProxy;
-import com.tgame.extraperception.utils.ESPCreativeTab;
 import com.tgame.mods.libs.registry.RegistryHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
@@ -15,8 +14,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
 /**
@@ -55,7 +52,7 @@ public class ExtrasensoryPerception
         MinecraftForge.EVENT_BUS.register(new CastEventListener());
 
         SpellRegistry.INSTANCE.addSpell(SpellHighJump.class.getSimpleName(), new SpellHighJump());
-        SpellRegistry.INSTANCE.addSpell(SpellShaderBlobs.class.getSimpleName(), new SpellShaderBlobs());
+        SpellRegistry.INSTANCE.addSpell(SpellShaders.class.getSimpleName(), new SpellShaders());
 
         Settings.LOGGER.info("Exiting Preinit");
     }

@@ -1,9 +1,9 @@
 package com.tgame.extraperception.armor;
 
 import com.tgame.extraperception.Settings;
+import com.tgame.extraperception.utils.ESPCreativeTab;
 import com.tgame.extraperception.utils.ESPItemHelper;
 import com.tgame.mods.coremod.prefabs.items.ItemArmorBase;
-import net.minecraft.item.ItemArmor;
 
 /**
  * @since 21/04/14
@@ -13,7 +13,7 @@ public class ItemShamanArmor extends ItemArmorBase
 {
     public ItemShamanArmor (int renderIndex, int armorType)
     {
-        super(ESPItemHelper.armorMaterialUnprotective, renderIndex, armorType, Settings.DOMAIN);
+        super(ESPItemHelper.armorMaterialUnprotective, renderIndex, armorType, Settings.RESOURCE_LOCATION, ESPCreativeTab.INSTANCE);
     }
 
 }

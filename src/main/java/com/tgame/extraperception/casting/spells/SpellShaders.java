@@ -1,5 +1,6 @@
 package com.tgame.extraperception.casting.spells;
 
+import com.tgame.extraperception.Settings;
 import com.tgame.extraperception.api.ISpell;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.client.Minecraft;
@@ -9,18 +10,17 @@ import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.client.util.JsonException;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import org.apache.logging.log4j.Level;
 
 /**
  * @since 22/04/14
  * @author tgame14
  */
-public class SpellShaderBlobs implements ISpell
+public class SpellShaders implements ISpell
 {
-    private static ResourceLocation[] shaderResourceLocations;
-    static
-    {
-        shaderResourceLocations = ReflectionHelper.getPrivateValue(EntityRenderer.class, Minecraft.getMinecraft().entityRenderer, "shaderResourceLocations");
-    }
+    private static ResourceLocation[] shaderResourceLocations = ReflectionHelper.getPrivateValue(EntityRenderer.class, Minecraft.getMinecraft().entityRenderer, "shaderResourceLocations");
+
+    private int index = 0;
 
     @Override
     public void onSpellUse (EntityPlayer player)
@@ -41,13 +41,19 @@ public class SpellShaderBlobs implements ISpell
                 {
                     mc.entityRenderer.theShaderGroup.deleteShaderGroup();
                 }
-                mc.entityRenderer.theShaderGroup = new ShaderGroup(manager, mc.getFramebuffer(), shaderResourceLocations[2]);
+                mc.entityRenderer.theShaderGroup = new ShaderGroup(manager, mc.getFramebuffer(), shaderResourceLocations[index]);
                 mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
             }
             catch (JsonException e)
             {
+                Settings.LOGGER.catching(Level.FATAL, e);
                 e.printStackTrace();
             }
+        }
+        index++;
+        if (index >= shaderResourceLocations.length)
+        {
+            index = 0;
         }
     }
 }

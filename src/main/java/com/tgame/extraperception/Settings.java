@@ -17,7 +17,8 @@ public class Settings
     public static final String VERSION = "@VERSION@";
     public static final String NAME = "Extrasensory Perception";
 
-    public static final String DOMAIN = MODID + ":";
+    public static final String RESOURCE_LOCATION = MODID + ":";
+    public static final String NAMESPACE = "com.tgame.extraperception";
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 }
