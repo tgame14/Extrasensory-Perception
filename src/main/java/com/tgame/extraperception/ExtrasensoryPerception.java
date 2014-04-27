@@ -6,6 +6,7 @@ import com.tgame.extraperception.casting.CastEventListener;
 import com.tgame.extraperception.casting.spells.SpellHighJump;
 import com.tgame.extraperception.api.SpellRegistry;
 import com.tgame.extraperception.casting.spells.SpellShaders;
+import com.tgame.extraperception.items.ItemCastingStick;
 import com.tgame.extraperception.proxies.CommonProxy;
 import com.tgame.mods.libs.registry.RegistryHandler;
 import cpw.mods.fml.common.Mod;
@@ -44,10 +45,13 @@ public class ExtrasensoryPerception
     {
         Settings.LOGGER.info("Entering Preinit");
 
+
         Items.itemShamanHelmet = registryHandler.registerItem(new ItemShamanArmor(commonProxy.addArmor("shaman"), 0));
         Items.itemShamanChest = registryHandler.registerItem(new ItemShamanArmor(commonProxy.addArmor("shaman"), 1));
         Items.itemShamanLegs = registryHandler.registerItem(new ItemShamanArmor(commonProxy.addArmor("shaman"), 2));
         Items.itemShamanBoots = registryHandler.registerItem(new ItemShamanArmor(commonProxy.addArmor("shaman"), 3));
+
+        Items.itemCastingStick = registryHandler.registerItem(new ItemCastingStick());
 
         MinecraftForge.EVENT_BUS.register(new CastEventListener());
 
