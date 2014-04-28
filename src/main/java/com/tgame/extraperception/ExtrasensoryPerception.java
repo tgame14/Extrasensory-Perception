@@ -1,20 +1,23 @@
 package com.tgame.extraperception;
 
+import com.tgame.extraperception.api.ActionRegistry;
 import com.tgame.extraperception.api.definitions.Items;
 import com.tgame.extraperception.armor.ItemShamanArmor;
 import com.tgame.extraperception.casting.CastEventListener;
-import com.tgame.extraperception.casting.spells.SpellHighJump;
-import com.tgame.extraperception.api.SpellRegistry;
-import com.tgame.extraperception.casting.spells.SpellShaders;
+import com.tgame.extraperception.casting.PlayerDataHandler;
+import com.tgame.extraperception.casting.abilities.ActionShaders;
+import com.tgame.extraperception.casting.abilities.ActionlHighJump;
 import com.tgame.extraperception.items.ItemCastingStick;
 import com.tgame.extraperception.proxies.CommonProxy;
 import com.tgame.mods.libs.registry.RegistryHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.FMLEventChannel;
 import net.minecraftforge.common.MinecraftForge;
 
 /**
@@ -54,9 +57,10 @@ public class ExtrasensoryPerception
         Items.itemCastingStick = registryHandler.registerItem(new ItemCastingStick());
 
         MinecraftForge.EVENT_BUS.register(new CastEventListener());
+        FMLCommonHandler.instance().bus().register(new PlayerDataHandler());
 
-        SpellRegistry.INSTANCE.addSpell(SpellHighJump.class.getSimpleName(), new SpellHighJump());
-        SpellRegistry.INSTANCE.addSpell(SpellShaders.class.getSimpleName(), new SpellShaders());
+        ActionRegistry.INSTANCE.addSpell(ActionlHighJump.class.getSimpleName(), new ActionlHighJump());
+        ActionRegistry.INSTANCE.addSpell(ActionShaders.class.getSimpleName(), new ActionShaders());
 
         Settings.LOGGER.info("Exiting Preinit");
     }
@@ -82,7 +86,7 @@ public class ExtrasensoryPerception
     {
         Settings.LOGGER.info("Entering PostInit");
 
-        SpellRegistry.INSTANCE.postLoaded();
+        ActionRegistry.INSTANCE.postLoaded();
 
         Settings.LOGGER.info("Exiting PostInit");
     }

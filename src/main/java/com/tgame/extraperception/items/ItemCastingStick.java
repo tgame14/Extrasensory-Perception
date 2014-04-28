@@ -3,9 +3,8 @@ package com.tgame.extraperception.items;
 import com.tgame.extraperception.Settings;
 import com.tgame.extraperception.items.render.ItemCastingStickRenderer;
 import com.tgame.extraperception.utils.ESPCreativeTab;
-import com.tgame.mods.coremod.prefabs.items.ItemBase;
+import com.tgame.mods.libs.prefabs.items.ItemBase;
 import com.tgame.mods.libs.registry.Registry;
-import net.minecraft.creativetab.CreativeTabs;
 
 /**
  * @since 26/04/14

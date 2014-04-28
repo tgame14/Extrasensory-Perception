@@ -1,6 +1,6 @@
 package com.tgame.extraperception.proxies;
 
-import com.tgame.mods.coremod.CommonProxyBase;
+import com.tgame.mods.core.CommonProxyBase;
 
 /**
  * @since 21/04/14

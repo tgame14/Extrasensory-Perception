@@ -3,7 +3,7 @@ package com.tgame.extraperception.armor;
 import com.tgame.extraperception.Settings;
 import com.tgame.extraperception.utils.ESPCreativeTab;
 import com.tgame.extraperception.utils.ESPItemHelper;
-import com.tgame.mods.coremod.prefabs.items.ItemArmorBase;
+import com.tgame.mods.libs.prefabs.items.ItemArmorBase;
 
 /**
  * @since 21/04/14

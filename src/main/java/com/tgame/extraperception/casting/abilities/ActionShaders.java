@@ -1,7 +1,7 @@
-package com.tgame.extraperception.casting.spells;
+package com.tgame.extraperception.casting.abilities;
 
 import com.tgame.extraperception.Settings;
-import com.tgame.extraperception.api.ISpell;
+import com.tgame.extraperception.api.IAction;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.EntityRenderer;
@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Level;
  * @since 22/04/14
  * @author tgame14
  */
-public class SpellShaders implements ISpell
+public class ActionShaders implements IAction
 {
     private static ResourceLocation[] shaderResourceLocations = ReflectionHelper.getPrivateValue(EntityRenderer.class, Minecraft.getMinecraft().entityRenderer, "shaderResourceLocations");
 
