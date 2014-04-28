@@ -49,6 +49,9 @@ configFile.withReader {
 }
 
 apply plugin: 'forge'
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin 'maven'
 
 version = config.mod_version + buildNum
 group= "com.tgame.extraperception" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -57,6 +60,28 @@ archivesBaseName = "modid"
 minecraft {
     version = config.minecraft_version + "-" + config.forge_version
     assetDir = "eclipse/assets"
+    
+    replace "@VERSION@", project.version
+    replace "@AUTHOR@", config.author_name
+}
+
+task deobfJar(type: Jar) {
+        from sourceSets.main.output
+        appendix = 'deobf'
+}
+ 
+// creates an API jar
+task apiJar(type: Jar) {
+    from(sourceSets.main.java)
+    {
+        include "com/tgame/extrasensoryperception/api/*"
+    }
+    appendix = 'api'
+}
+ 
+artifacts {
+        archives deobfJar
+		archives apiJar
 }
 
 // TODO: remove as MCMOD.INFO is generated on runtime
