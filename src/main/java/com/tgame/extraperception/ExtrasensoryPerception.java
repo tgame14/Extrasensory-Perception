@@ -10,6 +10,7 @@ import com.tgame.extraperception.casting.abilities.ActionShaders;
 import com.tgame.extraperception.casting.abilities.ActionlHighJump;
 import com.tgame.extraperception.items.ItemCastingStick;
 import com.tgame.extraperception.proxies.CommonProxy;
+import com.tgame.mods.interfaces.IMod;
 import com.tgame.mods.libs.registry.RegistryHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -26,7 +27,7 @@ import net.minecraftforge.common.MinecraftForge;
  * @author tgame14
  */
 @Mod(modid = Settings.MODID, version = Settings.VERSION, name = Settings.NAME)
-public class ExtrasensoryPerception
+public class ExtrasensoryPerception implements IMod
 {
     @Mod.Instance(Settings.MODID)
     public static ExtrasensoryPerception instance;
