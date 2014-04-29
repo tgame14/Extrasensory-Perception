@@ -10,6 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
  */
 public interface IAction
 {
-    public void onSpellUse(EntityPlayer player);
+    public void onActionCalled (EntityPlayer player);
 
 }

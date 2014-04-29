@@ -1,0 +1,3 @@
+item.ItemCastingStick.name=Woody Casting Stick
+info.stick.status=Current Casting status: %b
+info.stick.currspell=Current Spell is: %sp

@@ -23,7 +23,7 @@ public class ActionShaders implements IAction
     private int index = 0;
 
     @Override
-    public void onSpellUse (EntityPlayer player)
+    public void onActionCalled (EntityPlayer player)
     {
         if (player.getEntityWorld().isRemote)
         {

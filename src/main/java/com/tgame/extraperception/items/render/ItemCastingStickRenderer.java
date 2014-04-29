@@ -42,7 +42,7 @@ public class ItemCastingStickRenderer implements IItemRenderer
     {
         GL11.glPushMatrix();
 
-        //TODO: Render Code
+
 
         GL11.glPopMatrix();
     }

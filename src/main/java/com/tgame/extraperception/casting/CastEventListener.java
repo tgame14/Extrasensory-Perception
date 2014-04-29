@@ -51,7 +51,7 @@ public class CastEventListener
 //                    else if (event.entityPlayer.getEntityData().hasKey(PLAYER_USE_SPELLS) && event.entityPlayer.getEntityData().getBoolean(PLAYER_USE_SPELLS) && event.entityPlayer.getEntityData().hasKey(CURRENT_SPELL))
 //                    {
 //                        IAction spell = ActionRegistry.INSTANCE.actionMap.get(event.entityPlayer.getEntityData().getString(CURRENT_SPELL));
-//                        spell.onSpellUse(event.entityPlayer);
+//                        spell.onActionCalled(event.entityPlayer);
 //
 //
 //                    }

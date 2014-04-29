@@ -21,6 +21,9 @@ public class PlayerDataHandler
     public static final String COMPETENCE_KEY = "competence";
     public static final String WALK_DISTANCE_KEY = "walkingDistance";
 
+    public static final String PLAYER_USE_SPELLS = "useSpells";
+    public static final String CURRENT_SPELL = "currentSpellUsed";
+
     @SubscribeEvent
     public void PlayerLoginEvent (PlayerEvent.PlayerLoggedInEvent event)
     {
@@ -32,6 +35,10 @@ public class PlayerDataHandler
         NBTUtility.addNBTIntKey(event.player.getEntityData(), DEXTERITY_KEY, 0);
         NBTUtility.addNBTIntKey(event.player.getEntityData(), COMPETENCE_KEY, 0);
         NBTUtility.addNBTIntKey(event.player.getEntityData(), WALK_DISTANCE_KEY, 0);
+
+        NBTUtility.addNBTStringKey(event.player.getEntityData(), CURRENT_SPELL, "empty");
+        NBTUtility.addNBTBooleanKey(event.player.getEntityData(), PLAYER_USE_SPELLS, false);
+
 
         Settings.LOGGER.info(event.player + "MC NBT: " + tag);
         Settings.LOGGER.info(event.player + "Forge NBT: " + event.player.getEntityData());

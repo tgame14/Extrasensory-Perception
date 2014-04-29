@@ -10,7 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class ActionlHighJump implements IAction
 {
     @Override
-    public void onSpellUse (EntityPlayer player)
+    public void onActionCalled (EntityPlayer player)
     {
         if (player.onGround)
         {
