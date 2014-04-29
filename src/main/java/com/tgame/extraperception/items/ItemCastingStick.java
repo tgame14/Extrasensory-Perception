@@ -60,39 +60,59 @@ public class ItemCastingStick extends ESPAbstractItem
     }
 
     @Override
-    public boolean onItemUse (ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
+    public void onUsingTick (ItemStack stack, EntityPlayer player, int count)
     {
-        if (player.isSneaking())
-        {
-            String key = player.getEntityData().getString(CastEventListener.CURRENT_SPELL);
-            if (key.equals("empty"))
-            {
-                player.getEntityData().setString(CastEventListener.CURRENT_SPELL, ActionRegistry.INSTANCE.actionList.get(0));
-
-            }
-            else
-            {
-                if (Keyboard.isKeyDown(Keyboard.KEY_G))
-                {
-                    int index = ActionRegistry.INSTANCE.actionList.indexOf(key);
-                    String nextAction = ActionRegistry.INSTANCE.actionList.get(index++);
-                    player.getEntityData().setString(CastEventListener.CURRENT_SPELL, nextAction);
-                    player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("info.stick.currspell").replaceAll("%sp", nextAction)));
-                }
-                else
-                {
-                    IAction action = ActionRegistry.INSTANCE.actionMap.get(key);
-                    action.onActionCalled(player);
-                }
-            }
-        }
-
-        return super.onItemUse(stack, player, world, x, y, z, side, hitX, hitY, hitZ);
+        super.onUsingTick(stack, player, count);
     }
 
     @Override
-    public boolean onEntitySwing (EntityLivingBase entityLiving, ItemStack stack)
+    public boolean onEntitySwing (EntityLivingBase entity, ItemStack stack)
     {
-        return super.onEntitySwing(entityLiving, stack);
+        EntityPlayer player = null;
+        if (entity instanceof EntityPlayer)
+        {
+            player = (EntityPlayer) entity;
+        }
+        else
+        {
+            return super.onEntitySwing(entity, stack);
+        }
+
+        String key = player.getEntityData().getString(CastEventListener.CURRENT_SPELL);
+        System.out.println("key = " + key);
+        if (key == null || key.isEmpty())
+        {
+            key = ActionRegistry.INSTANCE.actionList.get(0);
+        }
+
+        if (Keyboard.isKeyDown(Keyboard.KEY_G))
+        {
+            int index = ActionRegistry.INSTANCE.actionList.indexOf(key);
+            if (index < 0)
+            {
+                index = 0;
+            }
+            String nextAction = ActionRegistry.INSTANCE.actionList.get(index++);
+            if (nextAction == null)
+            {
+                nextAction = ActionRegistry.INSTANCE.actionList.get(0);
+            }
+            player.getEntityData().setString(CastEventListener.CURRENT_SPELL, nextAction);
+            player.addChatComponentMessage(new ChatComponentText(StatCollector.translateToLocal("info.stick.currspell").replaceAll("%sp", nextAction) + " ewewewew"));
+        }
+        else
+        {
+            String candidate = player.getEntityData().getString(CastEventListener.CURRENT_SPELL);
+            System.out.println("Candidate = " + candidate);
+            IAction action = ActionRegistry.INSTANCE.actionMap.get(player.getEntityData().getString(CastEventListener.CURRENT_SPELL));
+            System.out.println("action = " + action);
+            System.out.println("Map " + ActionRegistry.INSTANCE.actionMap);
+            System.out.println("List " + ActionRegistry.INSTANCE.actionList);
+            action.onActionCalled(player);
+        }
+        return super.onEntitySwing(entity, stack);
     }
 }
+
+
+

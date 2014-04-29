@@ -1,6 +1,7 @@
 package com.tgame.extraperception.casting;
 
 import com.tgame.extraperception.Settings;
+import com.tgame.extraperception.api.ActionRegistry;
 import com.tgame.mods.libs.utility.NBTUtility;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
@@ -36,8 +37,8 @@ public class PlayerDataHandler
         NBTUtility.addNBTIntKey(event.player.getEntityData(), COMPETENCE_KEY, 0);
         NBTUtility.addNBTIntKey(event.player.getEntityData(), WALK_DISTANCE_KEY, 0);
 
-        NBTUtility.addNBTStringKey(event.player.getEntityData(), CURRENT_SPELL, "empty");
         NBTUtility.addNBTBooleanKey(event.player.getEntityData(), PLAYER_USE_SPELLS, false);
+        NBTUtility.addNBTStringKey(event.player.getEntityData(), CURRENT_SPELL, ActionRegistry.INSTANCE.actionList.get(0));
 
 
         Settings.LOGGER.info(event.player + "MC NBT: " + tag);

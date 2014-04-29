@@ -20,8 +20,8 @@ public class ActionRegistry
     public ImmutableMap<String, IAction> actionMap;
     public ImmutableList<String> actionList;
 
-    private final ImmutableMap.Builder<String, IAction> actionMapBuilder = ImmutableMap.builder();
-    private final ImmutableList.Builder<String> actionListBuilder = ImmutableList.builder();
+    private final ImmutableMap.Builder<String, IAction> actionMapBuilder = ImmutableMap.<String, IAction>builder();
+    private final ImmutableList.Builder<String> actionListBuilder = ImmutableList.<String>builder();
 
     private ActionRegistry () {}
 

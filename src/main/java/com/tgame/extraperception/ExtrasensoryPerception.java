@@ -5,6 +5,7 @@ import com.tgame.extraperception.api.definitions.Items;
 import com.tgame.extraperception.armor.ItemShamanArmor;
 import com.tgame.extraperception.casting.CastEventListener;
 import com.tgame.extraperception.casting.PlayerDataHandler;
+import com.tgame.extraperception.casting.abilities.ActionLetItGo;
 import com.tgame.extraperception.casting.abilities.ActionShaders;
 import com.tgame.extraperception.casting.abilities.ActionlHighJump;
 import com.tgame.extraperception.items.ItemCastingStick;
@@ -61,6 +62,7 @@ public class ExtrasensoryPerception
 
         ActionRegistry.INSTANCE.addSpell(ActionlHighJump.class.getSimpleName(), new ActionlHighJump());
         ActionRegistry.INSTANCE.addSpell(ActionShaders.class.getSimpleName(), new ActionShaders());
+        ActionRegistry.INSTANCE.addSpell(ActionLetItGo.class.getSimpleName(), new ActionLetItGo());
 
         Settings.LOGGER.info("Exiting Preinit");
     }
