@@ -55,7 +55,7 @@ apply plugin 'maven'
 
 version = config.mod_version + buildNum
 group= "com.tgame.extraperception" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+archivesBaseName = "extraperception"
 
 minecraft {
     version = config.minecraft_version + "-" + config.forge_version
