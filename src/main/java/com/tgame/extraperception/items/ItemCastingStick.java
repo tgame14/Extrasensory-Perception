@@ -5,7 +5,7 @@ import com.tgame.extraperception.api.ActionRegistry;
 import com.tgame.extraperception.api.IAction;
 import com.tgame.extraperception.casting.CastEventListener;
 import com.tgame.extraperception.items.render.ItemCastingStickRenderer;
-import com.tgame.mods.libs.registry.Registry;
+import com.tgame.mods.libs.registry.ItemData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -22,7 +22,7 @@ import org.lwjgl.input.Keyboard;
  * @since 26/04/14
  * @author tgame14
  */
-@Registry.ItemData(itemRenderer = ItemCastingStickRenderer.class)
+@ItemData(itemRendererClass = ItemCastingStickRenderer.class)
 public class ItemCastingStick extends ESPAbstractItem
 {
     @SideOnly(Side.CLIENT)
